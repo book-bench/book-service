@@ -1,5 +1,9 @@
 log-messages:
   no-such-book: Book with id = %s  doesn't exist
+  request-log: request was received {"method":"{}", "url":"{}", "parameters":"{}"}
+  rejected-request-log: request was rejected. {}
+  response-log: next books were found {}
+  updated-book: book was updated {}
 spring:
   jpa:
     defer-datasource-initialization: true

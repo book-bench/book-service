@@ -13,8 +13,15 @@ public class Response {
     public List<Book> getBooks() {
         return books;
     }
-    public static Response createResponseWithBooks(List<Book> books) {
+    public static Response createResponseWithAtLeastOneBook(List<Book> books) {
         Response response = new Response();
+        response.setBooks(books);
+        return response;
+    }
+
+    public static Response createResponseWithAtLeastOneBook(Book book) {
+        Response response = new Response();
+        List<Book> books = List.of(book);
         response.setBooks(books);
         return response;
     }

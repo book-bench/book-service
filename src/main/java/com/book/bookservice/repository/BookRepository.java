@@ -14,4 +14,7 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
 
     @Override
     Optional<Book> findById(Integer id);
+
+    @Override
+    <S extends Book> S save(S entity);
 }

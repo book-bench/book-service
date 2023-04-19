@@ -17,6 +17,10 @@ public class BookService {
     @Value("${log-messages.no-such-book}")
     private String noSuchBookLogMsg;
 
+    @Value("${log-messages.updated-book}")
+    private String updatedBookMsg;
+
+
     private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 
     private BookRepository bookRepository;
@@ -38,5 +42,13 @@ public class BookService {
                                 return new NoSuchBookException(String.format(noSuchBookLogMsg, id));
                             });
 
+    }
+
+    public Book updateBookQuantity(Integer id, Integer quantity) {
+        Book book = getBookById(id);
+        book.setQuantity(quantity);
+        bookRepository.save(book);
+        logger.info(updatedBookMsg, book);
+        return book;
     }
 }
