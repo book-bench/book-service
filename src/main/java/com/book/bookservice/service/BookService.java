@@ -1,14 +1,23 @@
 package com.book.bookservice.service;
 
+import com.book.bookservice.controller.ExceptionController;
 import com.book.bookservice.exception.NoSuchBookException;
 import com.book.bookservice.model.Book;
 import com.book.bookservice.repository.BookRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class BookService {
+
+    @Value("${log-messages.no-such-book}")
+    private String noSuchBookLogMsg;
+
+    private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 
     private BookRepository bookRepository;
 
@@ -24,7 +33,10 @@ public class BookService {
     public Book getBookById(Integer id) {
 
         return bookRepository.findById(id)
-                            .orElseThrow(()-> new NoSuchBookException(String.format("Book with id = %s  doesn't exist", id)));
+                            .orElseThrow(()-> {
+                                logger.info(String.format(noSuchBookLogMsg, id));
+                                return new NoSuchBookException(String.format(noSuchBookLogMsg, id));
+                            });
 
     }
 }

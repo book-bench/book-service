@@ -2,7 +2,6 @@ package com.book.bookservice.controller;
 
 import com.book.bookservice.exception.NoSuchBookException;
 import com.book.bookservice.model.Response;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
