@@ -1,7 +1,7 @@
 log-messages:
-  no-such-book: Book with id = %s  doesn't exist
+  no-such-book: Book with id = {} doesn't exist
   request-log: request was received {"method":"{}", "url":"{}", "parameters":"{}"}
-  rejected-request-log: request was rejected. {}
+  rejected-request-log: request was rejected. Reason - {}
   response-log: next books were found {}
   updated-book: book was updated {}
 spring:

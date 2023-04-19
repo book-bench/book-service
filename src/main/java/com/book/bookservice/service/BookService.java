@@ -14,9 +14,6 @@ import java.util.List;
 @Service
 public class BookService {
 
-    @Value("${log-messages.no-such-book}")
-    private String noSuchBookLogMsg;
-
     @Value("${log-messages.updated-book}")
     private String updatedBookMsg;
 
@@ -37,11 +34,7 @@ public class BookService {
     public Book getBookById(Integer id) {
 
         return bookRepository.findById(id)
-                            .orElseThrow(()-> {
-                                logger.info(String.format(noSuchBookLogMsg, id));
-                                return new NoSuchBookException(String.format(noSuchBookLogMsg, id));
-                            });
-
+                            .orElseThrow(()-> new NoSuchBookException(id));
     }
 
     public Book updateBookQuantity(Integer id, Integer quantity) {
