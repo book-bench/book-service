@@ -15,12 +15,12 @@ import java.util.List;
 public class BookService {
 
     @Value("${log-messages.updated-book}")
-    private String updatedBookMsg;
+    private transient String updatedBookMsg;
 
 
     private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 
-    private BookRepository bookRepository;
+    private transient BookRepository bookRepository;
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;

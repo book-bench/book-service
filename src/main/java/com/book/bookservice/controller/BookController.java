@@ -23,14 +23,14 @@ import java.util.List;
 public class BookController {
 
     @Value("${log-messages.request-log}")
-    private String requestLogMessage;
+    private transient String requestLogMessage;
 
     @Value("${log-messages.response-log}")
-    private String responseLogMessage;
+    private transient String responseLogMessage;
 
     private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 
-    private BookService bookService;
+    private transient BookService bookService;
 
     public BookController(BookService bookService) {
         this.bookService = bookService;

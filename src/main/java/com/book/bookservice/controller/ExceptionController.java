@@ -17,10 +17,10 @@ import java.util.List;
 public class ExceptionController {
 
     @Value("${log-messages.rejected-request-log}")
-    private String RejectedRequestLogMessage;
+    private transient String RejectedRequestLogMessage;
 
     @Value("${log-messages.no-such-book}")
-    private String noSuchBookLogMsg;
+    private transient String noSuchBookLogMsg;
 
     private static final Logger logger = LoggerFactory.getLogger(ExceptionController.class);
 
