@@ -1,6 +1,5 @@
 package com.book.bookservice.service;
 
-import com.book.bookservice.controller.ExceptionController;
 import com.book.bookservice.exception.NoSuchBookException;
 import com.book.bookservice.model.Book;
 import com.book.bookservice.repository.BookRepository;
