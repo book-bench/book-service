@@ -5,12 +5,11 @@ import com.book.bookservice.model.Book;
 import com.book.bookservice.model.Response;
 import com.book.bookservice.service.BookService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +34,8 @@ public class BookController {
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
-    @GetMapping
+
+    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
     public Response getBooks(HttpServletRequest request) {
         logger.info(requestLogMessage,request.getMethod(), request.getRequestURI());
         List<Book> books = bookService.getAllBooks();
