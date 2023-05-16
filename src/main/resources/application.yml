@@ -5,6 +5,10 @@ log-messages:
   response-log: next books were found {}
   updated-book: book was updated {}
 spring:
+  config:
+    import: configserver:http://localhost:8080
+  application:
+    name: bookservices
   jpa:
     defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.H2Dialect
