@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Min;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,10 @@ public class BookController {
         this.bookService = bookService;
     }
 
+//    HttpMethod hello = HttpMethod.valueOf("Hello");
+
+
+
     @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
     public Response getBooks(HttpServletRequest request) {
         logger.info(requestLogMessage,request.getMethod(), request.getRequestURI());
@@ -53,11 +58,12 @@ public class BookController {
     }
 
     @PatchMapping("/{id}")
-
     public  Response updateBookQuantity(@PathVariable Integer id,  @RequestParam @Min(0) Integer quantity, HttpServletRequest request) {
         logger.info(requestLogMessage,request.getMethod(), request.getRequestURI(), request.getQueryString());
         Book book = bookService.updateBookQuantity(id, quantity);
         logger.info(responseLogMessage, book);
+
+
         return Response.createResponseWithAtLeastOneBook(book);
     }
 }

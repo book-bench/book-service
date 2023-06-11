@@ -1,24 +1,5 @@
-log-messages:
-  no-such-book: Book with id = {} doesn't exist
-  request-log: request was received {"method":"{}", "url":"{}", "parameters":"{}"}
-  rejected-request-log: request was rejected. Reason - {}
-  response-log: next books were found {}
-  updated-book: book was updated {}
 spring:
   config:
     import: configserver:http://localhost:8080
   application:
     name: bookservices
-  jpa:
-    defer-datasource-initialization: true
-    database-platform: org.hibernate.dialect.H2Dialect
-
-  h2:
-    console.enabled: true
-  datasource:
-    url: jdbc:h2:mem:mydb1
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
-server:
-  port: 8080
