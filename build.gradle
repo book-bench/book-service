@@ -36,6 +36,8 @@ dependencies {
 
 	testImplementation 'org.apache.logging.log4j:log4j-slf4j-impl'
 
+	implementation 'org.springframework.kafka:spring-kafka'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
 
 }
 
@@ -62,3 +64,14 @@ pmd {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.register("SimpleTaskHello") {
+	doFirst {
+		println 'Hello first'
+	}
+	doLast {
+		println 'Hello last'
+	}
+}
+
+build.dependsOn SimpleTaskHello
