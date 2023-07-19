@@ -16,6 +16,10 @@ public class BookServiceApplication {
 
 	@Bean
 	CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate) {
-		return args -> kafkaTemplate.send("Books", "Dragon Lord");
+		return args -> {
+			for (int i = 0; i < 10; i++) {
+				kafkaTemplate.send("Books", "Kafka message N " + i);
+			}
+		};
 	}
 }
